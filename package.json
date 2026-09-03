@@ -12,7 +12,7 @@
     "dev": "vite",
     "prebuild": "npm run check:runtime",
     "build": "tsc && vite build && node scripts/prepare-sites-build.mjs",
-    "test": "node --test tests/calculations.test.ts"
+    "test": "node --test tests/calculations.test.ts tests/indication-references.test.ts"
   },
   "dependencies": {
     "@fontsource/roboto": "5.2.10",

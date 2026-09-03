@@ -427,6 +427,319 @@ body {
   overflow-wrap: anywhere;
 }
 
+.indication-reference {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid #d7e2e9;
+}
+
+.indication-reference-header {
+  padding: 0 2px 14px;
+}
+
+.indication-reference-header > span {
+  display: inline-flex;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #e8f6f5;
+  color: #087579;
+  font-size: 10px;
+  font-weight: 780;
+  letter-spacing: .04em;
+}
+
+.indication-reference-header h2 {
+  margin-top: 10px;
+  color: var(--navy-950);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.38;
+}
+
+.indication-reference-header p {
+  margin-top: 6px;
+  color: #637286;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.consensus-caution {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 9px;
+  padding: 12px;
+  border: 1px solid #efd2b8;
+  border-radius: 12px;
+  background: #fffaf5;
+}
+
+.consensus-caution svg {
+  width: 17px;
+  height: 17px;
+  margin-top: 1px;
+  color: var(--orange-600);
+}
+
+.consensus-caution p {
+  color: #85502d;
+  font-size: 10.5px;
+  line-height: 1.6;
+}
+
+.consensus-caution strong { color: #a34b11; }
+
+.indication-accordions {
+  display: grid;
+  gap: 9px;
+  margin-top: 11px;
+}
+
+.indication-accordion,
+.abbreviation-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: 0 2px 7px rgba(10, 40, 70, .045);
+}
+
+.indication-accordion > summary,
+.abbreviation-card > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 59px;
+  padding: 0 14px;
+  color: var(--navy-950);
+  cursor: pointer;
+  list-style: none;
+}
+
+.indication-accordion > summary::-webkit-details-marker,
+.abbreviation-card > summary::-webkit-details-marker,
+.evidence-detail > summary::-webkit-details-marker { display: none; }
+
+.indication-accordion > summary > span {
+  display: grid;
+  gap: 3px;
+}
+
+.indication-accordion > summary strong {
+  font-size: 14px;
+  font-weight: 780;
+  line-height: 1.35;
+}
+
+.indication-accordion > summary small {
+  color: #7a8796;
+  font-size: 10px;
+}
+
+.indication-accordion > summary svg,
+.abbreviation-card > summary svg,
+.evidence-detail > summary svg {
+  flex: 0 0 auto;
+  transition: transform .18s ease;
+}
+
+.indication-accordion > summary:focus-visible,
+.abbreviation-card > summary:focus-visible,
+.evidence-detail > summary:focus-visible {
+  outline: 2px solid #51a7ab;
+  outline-offset: -3px;
+}
+
+.indication-accordion[open] > summary svg,
+.abbreviation-card[open] > summary svg,
+.evidence-detail[open] > summary svg { transform: rotate(180deg); }
+
+.recommendation-list {
+  display: grid;
+  gap: 10px;
+  padding: 11px;
+  border-top: 1px solid #e7edf1;
+  background: #f5f8fa;
+}
+
+.recommendation-card {
+  padding: 13px;
+  border: 1px solid #dce5eb;
+  border-radius: 11px;
+  background: #fff;
+}
+
+.recommendation-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.recommendation-meta > span {
+  color: var(--navy-800);
+  font-size: 10px;
+  font-weight: 780;
+}
+
+.recommendation-meta > strong {
+  max-width: 70%;
+  padding: 3px 7px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 760;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.recommendation-meta .strength-a {
+  background: #e5f5f1;
+  color: #067266;
+}
+
+.recommendation-meta .strength-b {
+  background: #eaf1f8;
+  color: #315a80;
+}
+
+.recommendation-meta .strength-c {
+  background: #fff2e7;
+  color: #a85218;
+}
+
+.recommendation-card h4 {
+  margin-top: 9px;
+  color: #122b4d;
+  font-size: 13px;
+  font-weight: 780;
+  line-height: 1.45;
+}
+
+.recommendation-card > dl {
+  display: grid;
+  gap: 9px;
+  margin-top: 11px;
+}
+
+.recommendation-card > dl > div {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.recommendation-card dt {
+  color: #718094;
+  font-size: 10px;
+  font-weight: 680;
+  line-height: 1.55;
+}
+
+.recommendation-card dd {
+  margin: 0;
+  color: #3f5065;
+  font-size: 10.5px;
+  line-height: 1.6;
+}
+
+.recommendation-card .dose-reference-row {
+  padding: 9px 0 0;
+  border-top: 1px dashed #dce5ea;
+}
+
+.recommendation-card .dose-reference-row dt,
+.recommendation-card .dose-reference-row dd { color: #0a696e; }
+
+.recommendation-card .dose-reference-row dd { font-weight: 620; }
+
+.evidence-detail {
+  margin-top: 10px;
+  border-top: 1px solid #edf1f4;
+}
+
+.evidence-detail > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 35px;
+  color: #56677b;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+  list-style: none;
+}
+
+.evidence-detail > p {
+  padding: 0 0 3px;
+  color: #667689;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.abbreviation-card { margin-top: 9px; }
+
+.abbreviation-card > summary {
+  min-height: 48px;
+  font-size: 12px;
+  font-weight: 740;
+}
+
+.abbreviation-card > dl {
+  display: grid;
+  gap: 7px;
+  padding: 10px 14px 14px;
+  border-top: 1px solid #e8edf1;
+}
+
+.abbreviation-card > dl > div {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.abbreviation-card dt {
+  color: #183a65;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.abbreviation-card dd {
+  margin: 0;
+  color: #637286;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.consensus-source {
+  margin-top: 11px;
+  padding: 12px 13px;
+  border-left: 3px solid #75bec1;
+  border-radius: 0 10px 10px 0;
+  background: #f0f7f8;
+}
+
+.consensus-source strong {
+  color: var(--navy-800);
+  font-size: 10px;
+}
+
+.consensus-source p,
+.consensus-source a {
+  display: block;
+  color: #5f7084;
+  font-size: 9.5px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.consensus-source p:first-of-type { margin-top: 4px; }
+
+.consensus-source a {
+  margin-top: 4px;
+  color: #08767b;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .professional-footer {
   display: grid;
   gap: 5px;

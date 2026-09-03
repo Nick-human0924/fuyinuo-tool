@@ -15,6 +15,12 @@ import {
   formatPercent,
   type DoseLevel,
 } from "./calculations";
+import {
+  CLINICAL_ABBREVIATIONS,
+  CONSENSUS_SOURCE,
+  INDICATION_REFERENCES,
+  type IndicationRecommendation,
+} from "./indicationReferences";
 
 type MeasurementFieldProps = {
   id: string;
@@ -64,6 +70,38 @@ function ResultRow({ label, value, unit, emphasis = false }: { label: string; va
       <span>{label}</span>
       <strong>{value}{unit && value !== "—" ? <small> {unit}</small> : null}</strong>
     </div>
+  );
+}
+
+function RecommendationCard({ recommendation }: { recommendation: IndicationRecommendation }) {
+  const strengthClass = recommendation.strength === "A"
+    ? "strength-a"
+    : recommendation.strength === "B"
+      ? "strength-b"
+      : "strength-c";
+
+  return (
+    <article className="recommendation-card">
+      <div className="recommendation-meta">
+        <span>{recommendation.stage}</span>
+        <strong className={strengthClass}>{recommendation.strengthLabel}</strong>
+      </div>
+      <h4>{recommendation.regimen}</h4>
+      <dl>
+        <div>
+          <dt>适用人群</dt>
+          <dd>{recommendation.population}</dd>
+        </div>
+        <div className="dose-reference-row">
+          <dt>用法用量</dt>
+          <dd>{recommendation.dose}</dd>
+        </div>
+      </dl>
+      <details className="evidence-detail">
+        <summary>核心循证数据 <ChevronDownIcon /></summary>
+        <p>{recommendation.evidence}</p>
+      </details>
+    </article>
   );
 }
 
@@ -199,6 +237,57 @@ export default function Prototype() {
               </ol>
             </div>
           </details>
+        </section>
+
+        <section className="indication-reference" aria-labelledby="indication-reference-title">
+          <header className="indication-reference-header">
+            <span>专家共识参考 · 2025</span>
+            <h2 id="indication-reference-title">伊立替康脂质体在不同适应症的用法用量参考信息</h2>
+            <p>按适应症与治疗阶段整理，点击下方条目查看方案、人群、剂量及核心循证数据。</p>
+          </header>
+
+          <aside className="consensus-caution">
+            <ExclamationTriangleIcon aria-hidden="true" />
+            <p><strong>重要说明：</strong>以下内容整理自专家共识及相关临床研究，仅作专业信息索引。部分适应症、联合方案及剂量可能超出经批准说明书或尚处研究阶段，不作为处方建议，也不与上方计算结果联动。实际用药请依据最新版说明书、指南及医嘱。</p>
+          </aside>
+
+          <div className="indication-accordions">
+            {INDICATION_REFERENCES.map((indication) => (
+              <details className="indication-accordion" key={indication.id}>
+                <summary>
+                  <span>
+                    <strong>{indication.title}</strong>
+                    <small>{indication.recommendations.length} 条共识参考</small>
+                  </span>
+                  <ChevronDownIcon />
+                </summary>
+                <div className="recommendation-list">
+                  {indication.recommendations.map((recommendation) => (
+                    <RecommendationCard key={recommendation.id} recommendation={recommendation} />
+                  ))}
+                </div>
+              </details>
+            ))}
+          </div>
+
+          <details className="abbreviation-card">
+            <summary>缩写释义 <ChevronDownIcon /></summary>
+            <dl>
+              {CLINICAL_ABBREVIATIONS.map(([term, definition]) => (
+                <div key={term}>
+                  <dt>{term}</dt>
+                  <dd>{definition}</dd>
+                </div>
+              ))}
+            </dl>
+          </details>
+
+          <div className="consensus-source">
+            <strong>资料来源</strong>
+            <p>{CONSENSUS_SOURCE.title}</p>
+            <p>{CONSENSUS_SOURCE.journal}</p>
+            <a href={CONSENSUS_SOURCE.url} target="_blank" rel="noreferrer">DOI: {CONSENSUS_SOURCE.doi}</a>
+          </div>
         </section>
 
         <footer className="professional-footer">
