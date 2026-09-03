@@ -1,5 +1,9 @@
 # Mobile Prototype Agent Guide
 
+## Project-specific Runtime Decision
+
+- For this calculator's production and shared builds, render the app directly in the browser viewport. Do not restore the simulated phone bezel, device picker, status bar, home indicator, or simulated keyboard unless the user explicitly asks for a framed prototype again.
+
 ## Prototype Instructions
 
 In ChatGPT Work Mode, run `sites-preview start "$PWD"`, open `http://terminal.local:4173/` in the cloud browser, and verify the rendered app and its primary interactions. Keep that preview open and tell the user to inspect it in the cloud browser; do not present the local URL as a user-facing chat link. In Codex Desktop, run the local server yourself, open the preview in the in-app browser, and provide the clickable local URL. Do not deploy to Sites unless the user explicitly asks to share, publish, or deploy. Do not give the user server-start instructions when you can run it.

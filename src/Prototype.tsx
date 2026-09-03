@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
 import {
   CheckCircledIcon,
   ChevronDownIcon,
   ExclamationTriangleIcon,
   InfoCircledIcon,
 } from "@radix-ui/react-icons";
-import { BottomSheet, KeyboardInput, MobileScroll, useKeyboard } from "./mobile";
 import {
   CONCENTRATION_MG_PER_ML,
   VIAL_DOSE_MG,
@@ -34,14 +34,12 @@ function normalizePositiveNumber(nextValue: string) {
 }
 
 function MeasurementField({ id, label, unit, value, onChange, hint }: MeasurementFieldProps) {
-  const keyboard = useKeyboard();
-
   return (
     <div className="measurement-wrap">
       <label className="measurement-field" htmlFor={id}>
         <span className="measurement-label">{label}</span>
         <span className="measurement-input-row">
-          <KeyboardInput
+          <input
             id={id}
             data-testid={`${id}-input`}
             type="text"
@@ -51,7 +49,6 @@ function MeasurementField({ id, label, unit, value, onChange, hint }: Measuremen
             placeholder="—"
             aria-describedby={hint ? `${id}-hint` : undefined}
             onChange={(event) => onChange(normalizePositiveNumber(event.target.value))}
-            onBlur={() => keyboard.hide()}
           />
           <span className="measurement-unit">{unit}</span>
         </span>
@@ -92,7 +89,7 @@ export default function Prototype() {
     : undefined;
 
   return (
-    <MobileScroll className="app-screen">
+    <div className="app-screen">
       <main className="calculator" data-testid="dose-calculator">
         <header className="hero-header">
           <h1>复依诺<sup>®</sup> 用量速算</h1>
@@ -212,15 +209,20 @@ export default function Prototype() {
         </footer>
       </main>
 
-      <BottomSheet
-        open={infoOpen}
-        onOpenChange={setInfoOpen}
-        title="50 mg/m² 特殊起始/调整场景"
-        description="UGT1A1*28纯合子患者起始剂量说明"
-        snap={0.42}
-      >
-        <p className="sheet-medical-copy">已知UGT1A1*28纯合子患者，起始剂量建议减至50 mg/m²；如后续治疗周期耐受，可考虑增加至70 mg/m²。其他剂量调整请依据最新版说明书及医嘱。</p>
-      </BottomSheet>
-    </MobileScroll>
+      <Dialog.Root open={infoOpen} onOpenChange={setInfoOpen}>
+        <Dialog.Portal>
+          <Dialog.Overlay className="info-dialog-overlay" />
+          <Dialog.Content className="info-dialog-content">
+            <span className="info-dialog-handle" aria-hidden="true" />
+            <Dialog.Title>50 mg/m² 特殊起始/调整场景</Dialog.Title>
+            <Dialog.Description className="info-dialog-description">UGT1A1*28纯合子患者起始剂量说明</Dialog.Description>
+            <p className="sheet-medical-copy">已知UGT1A1*28纯合子患者，起始剂量建议减至50 mg/m²；如后续治疗周期耐受，可考虑增加至70 mg/m²。其他剂量调整请依据最新版说明书及医嘱。</p>
+            <Dialog.Close asChild>
+              <button className="info-dialog-close" type="button">知道了</button>
+            </Dialog.Close>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+    </div>
   );
 }

@@ -3,7 +3,7 @@ dist/
 test-results/
 playwright-report/
 design-qa.md
-design-qa-comparison.png
+design-qa-comparison*.png
 implementation-*.png
 *.log
 .DS_Store
