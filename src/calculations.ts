@@ -29,7 +29,7 @@ export function calculateDose(heightCm: number, weightKg: number, doseLevel: Dos
   const totalDoseMg = bsa * doseLevel;
   const rawVials = totalDoseMg / VIAL_DOSE_MG;
   const recommendedVials = doseLevel === 70
-    ? (rawVials >= 2.5 ? 3 : 2)
+    ? (rawVials > 3.4 ? 4 : rawVials >= 2.5 ? 3 : 2)
     : (rawVials >= 1.5 ? 2 : 1);
   const roundedVialDoseMg = recommendedVials * VIAL_DOSE_MG;
 

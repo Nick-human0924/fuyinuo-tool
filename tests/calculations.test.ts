@@ -41,5 +41,13 @@ describe("dose calculations", () => {
     const bsa50 = (1.5 * 43) / 50;
     const weight50 = (bsa50 ** 2 * 3600) / height;
     assert.equal(calculateDose(height, weight50, 50)?.recommendedVials, 2);
+
+    const bsa70UpperBoundary = (3.4 * 43) / 70;
+    const weight70UpperBoundary = (bsa70UpperBoundary ** 2 * 3600) / height;
+    assert.equal(calculateDose(height, weight70UpperBoundary, 70)?.recommendedVials, 3);
+
+    const bsa70AboveUpperBoundary = (3.41 * 43) / 70;
+    const weight70AboveUpperBoundary = (bsa70AboveUpperBoundary ** 2 * 3600) / height;
+    assert.equal(calculateDose(height, weight70AboveUpperBoundary, 70)?.recommendedVials, 4);
   });
 });
