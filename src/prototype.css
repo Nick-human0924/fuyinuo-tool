@@ -1,0 +1,454 @@
+/* App-specific styles. Template-owned mobile runtime styles remain in styles.css. */
+
+:root {
+  --navy-950: #06214f;
+  --navy-900: #07366f;
+  --navy-800: #0c4782;
+  --teal-600: #087f83;
+  --teal-400: #6fddd1;
+  --orange-600: #e76710;
+  --ink: #10213b;
+  --muted: #617084;
+  --line: #dce4ea;
+}
+
+.app-screen {
+  background: #f8fafb;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
+
+.calculator {
+  min-height: 100%;
+  padding: 70px 18px calc(var(--mobile-safe-area-height) + 28px);
+}
+
+.hero-header {
+  padding: 19px 4px 22px;
+  text-align: center;
+}
+
+.hero-header h1 {
+  color: var(--navy-950);
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: .03em;
+  line-height: 1.2;
+}
+
+.hero-header h1 sup {
+  font-size: 11px;
+  margin-left: 2px;
+  position: relative;
+  top: -.65em;
+}
+
+.hero-subtitle {
+  color: #536276;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 7px;
+}
+
+.measurement-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.measurement-wrap { min-width: 0; }
+
+.measurement-field {
+  display: block;
+  padding: 13px 13px 11px;
+  border: 1px solid #d7e0e7;
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(8, 36, 73, .03);
+}
+
+.measurement-field:focus-within {
+  border-color: #6cb7bd;
+  box-shadow: 0 0 0 3px rgba(8, 127, 131, .08);
+}
+
+.measurement-label {
+  display: block;
+  color: var(--navy-950);
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1;
+  margin-bottom: 7px;
+}
+
+.measurement-input-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.measurement-input-row input {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #111c32;
+  font-size: 28px;
+  font-weight: 650;
+  line-height: 1.1;
+}
+
+.measurement-input-row input::placeholder {
+  color: #aab5bf;
+  opacity: 1;
+}
+
+.measurement-unit {
+  color: #708094;
+  font-size: 13px;
+}
+
+.input-hint {
+  color: #9e5a24;
+  font-size: 10px;
+  line-height: 1.4;
+  padding: 5px 2px 0;
+}
+
+.bsa-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 83px;
+  margin-top: 12px;
+  padding: 15px 17px;
+  border: 1px solid #c9e3e5;
+  border-radius: 13px;
+  background: #f2fafb;
+}
+
+.bsa-card h2 {
+  color: var(--navy-950);
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.bsa-card p {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+.bsa-card > strong {
+  color: var(--teal-600);
+  font-size: 38px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.04em;
+  line-height: 1;
+}
+
+.bsa-card > strong small {
+  font-size: 17px;
+  letter-spacing: 0;
+}
+
+.dose-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 12px;
+  overflow: hidden;
+  border: 1px solid #ced8e1;
+  border-radius: 13px;
+  background: #fff;
+}
+
+.dose-selector > button,
+.dose-option-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 67px;
+  padding: 9px 6px;
+  border: 0;
+  background: transparent;
+  color: #17233b;
+}
+
+.dose-selector strong {
+  font-size: 16px;
+  font-weight: 760;
+}
+
+.dose-selector span {
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.dose-selector > .is-selected,
+.dose-option-with-info.is-selected {
+  background: var(--navy-900);
+  color: #fff;
+}
+
+.dose-option-with-info {
+  position: relative;
+  border-left: 1px solid #ced8e1;
+}
+
+.dose-option-with-info.is-selected .dose-option-main,
+.dose-option-with-info.is-selected .info-button { color: #fff; }
+
+.dose-option-main { padding-right: 30px; }
+
+.info-button {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  display: grid;
+  width: 28px;
+  height: 38px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #4b6077;
+  transform: translateY(-50%);
+}
+
+.info-button svg { width: 18px; height: 18px; }
+
+.product-spec {
+  color: #667588;
+  font-size: 10.5px;
+  line-height: 1.45;
+  margin: 8px 2px 12px;
+}
+
+.product-spec span {
+  color: var(--navy-800);
+  font-weight: 750;
+  margin-right: 6px;
+}
+
+.result-card {
+  overflow: hidden;
+  padding: 17px 18px 10px;
+  border-radius: 15px;
+  background: var(--navy-900);
+  box-shadow: 0 5px 14px rgba(5, 38, 83, .18);
+  color: #fff;
+}
+
+.result-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #e8f3ff;
+  font-size: 12px;
+}
+
+.result-badge svg { width: 15px; height: 15px; }
+
+.primary-result {
+  display: grid;
+  gap: 3px;
+  padding: 14px 0 12px;
+}
+
+.primary-result > span {
+  color: #b9d6eb;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.primary-result > strong {
+  color: var(--teal-400);
+  font-size: 45px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.045em;
+  line-height: 1;
+}
+
+.primary-result > strong small {
+  font-size: 19px;
+  letter-spacing: 0;
+}
+
+.result-table { border-top: 1px solid rgba(255, 255, 255, .14); }
+
+.result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 39px;
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+  color: #f0f5fa;
+  font-size: 13px;
+}
+
+.result-row:last-child { border-bottom: 0; }
+
+.result-row strong {
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.01em;
+}
+
+.result-row strong small { font-size: 12px; }
+
+.result-row--emphasis,
+.result-row--emphasis strong {
+  color: #ff9b33;
+  font-weight: 780;
+}
+
+.result-row--emphasis strong { font-size: 26px; }
+
+.safety-note {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+  padding: 13px;
+  border: 1px solid #efb178;
+  border-radius: 13px;
+  background: #fffaf5;
+}
+
+.safety-note svg {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  color: var(--orange-600);
+}
+
+.safety-note p {
+  color: #a64c12;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.disclosure-card {
+  overflow: hidden;
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: 0 2px 7px rgba(10, 40, 70, .05);
+}
+
+.disclosure-card > button,
+.disclosure-card summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 0;
+  background: #fff;
+  color: var(--navy-950);
+  font-size: 14px;
+  font-weight: 750;
+  list-style: none;
+}
+
+.disclosure-card summary::-webkit-details-marker { display: none; }
+.disclosure-card svg { transition: transform .18s ease; }
+.disclosure-card svg.is-open,
+.disclosure-card details[open] summary svg { transform: rotate(180deg); }
+
+.disclosure-content,
+.references-content {
+  border-top: 1px solid #e8edf1;
+  padding: 9px 14px 14px;
+}
+
+.rounding-content .result-row {
+  border-color: #edf1f4;
+  color: var(--ink);
+}
+
+.rounding-content .result-row strong {
+  color: var(--teal-600);
+  font-size: 14px;
+}
+
+.rounding-content > p {
+  color: #748293;
+  font-size: 10px;
+  line-height: 1.45;
+  margin-top: 8px;
+}
+
+.references-content ol {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 19px;
+}
+
+.references-content li {
+  color: #2f4055;
+  font-size: 11px;
+  line-height: 1.45;
+  padding-left: 2px;
+}
+
+.references-content li strong { color: #173153; font-size: 11.5px; }
+
+.references-content li p {
+  color: #53647a;
+  font-size: 11px;
+  line-height: 1.5;
+  margin-top: 3px;
+  overflow-wrap: anywhere;
+}
+
+.professional-footer {
+  display: grid;
+  gap: 5px;
+  padding: 20px 10px 4px;
+  text-align: center;
+}
+
+.professional-footer strong { color: #42526a; font-size: 11px; }
+
+.professional-footer p {
+  color: #657386;
+  font-size: 9.5px;
+  line-height: 1.45;
+}
+
+.professional-footer span {
+  color: #8a95a2;
+  font-size: 8.5px;
+  margin-top: 3px;
+}
+
+.sheet-medical-copy {
+  color: #34465b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.device-screen[data-device="pixel-10"] .calculator { padding-top: 80px; }
+
+@media (max-width: 360px) {
+  .calculator { padding-right: 14px; padding-left: 14px; }
+  .hero-header h1 { font-size: 24px; }
+  .measurement-input-row input { font-size: 24px; }
+  .dose-selector strong { font-size: 14px; }
+  .dose-selector span { font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
